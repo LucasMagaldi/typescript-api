@@ -1,5 +1,7 @@
 import { Router } from "express";
 
+import authController from "./controller/authController";
+
 
 class Routes {
     routes
@@ -12,7 +14,9 @@ class Routes {
     AppRoutes():any {
         this.routes.get('/test', (req,res) => {
             return res.status(200).json({Number:1000})
-        })
+        });
+
+        this.routes.post('/test', authController.Register);
     }
 }
 
