@@ -1,5 +1,6 @@
 import app from './app';
 import connectDB from './db/connection';
+import log from './logger';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -8,16 +9,15 @@ dotenv.config();
 const startAtlas = async () => {
     try {
         await connectDB(process.env.MONGO_URL);
-        console.log('****ATLAS WAS STARTED****')
+        log.info('****ATLAS WAS STARTED****')
     } catch (error) {
-        console.log(error)
+        log.error(error)
     }
 }
 
 
 app.listen(process.env.PORT, () => {
-    console.log(`PLAY AT: ${process.env.PORT}`)
+    log.info(`PLAY AT: ${process.env.PORT}`);
+    startAtlas();
 })
 
-
-startAtlas();
