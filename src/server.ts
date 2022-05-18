@@ -10,6 +10,7 @@ const startAtlas = async () => {
     try {
         await connectDB(process.env.MONGO_URL);
         log.info('****ATLAS WAS STARTED****')
+        log.info('****===========================================****')
     } catch (error) {
         log.error(error)
     }

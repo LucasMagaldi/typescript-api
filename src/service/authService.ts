@@ -21,12 +21,22 @@ class authService {
                     password: hash, 
                     createdAt:date
                  });
-            console.log(user)
+            //console.log(user)
             return user;
        } catch (error) {
             console.log(error);
-            return false
+            return new Error
        }
+   }
+
+   async findByEmail(email:string) {
+        try {
+             const emailAlreadyUsed = await User.findOne({email});
+             if(emailAlreadyUsed === null) return true
+             return false
+        } catch (error) {
+             return new Error
+        }
    }
 }
 
