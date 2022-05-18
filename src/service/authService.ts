@@ -35,7 +35,7 @@ class authService {
              if(emailAlreadyUsed === null) return true
              return false
         } catch (error) {
-             return new Error
+             return error
         }
    }
 }

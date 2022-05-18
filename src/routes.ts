@@ -1,4 +1,6 @@
 import { Router } from "express";
+import errorHandler from "./middleWare/errorHandler";
+import notFound from './middleWare/notFound'
 
 import authController from "./controller/authController";
 
@@ -17,6 +19,8 @@ class Routes {
         });
 
         this.routes.post('/auth/register', authController.Register);
+        this.routes.use(errorHandler);
+        this.routes.use(notFound);
     }
 }
 
