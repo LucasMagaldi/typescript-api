@@ -24,8 +24,6 @@ class authService {
             console.log(11)
             return user;
        } catch (error) {
-            console.log(error);
-            console.log("Final Errooo")
             return error
        }
    }

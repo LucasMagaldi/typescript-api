@@ -17,12 +17,12 @@ class authController {
             const response = await authService.register(email,name,last,pw);
             console.log(response);
             if(!response._id) { 
-                const x = await errorHandler(response)
-                return res.status(400).json({msg: x})
+                const errorHandling = await errorHandler(response)
+                return res.status(errorHandling.statusCode).json({msg: errorHandling.msg})
             }   
             return res.status(200).json({response})
         } catch (error) {
-            return res.status(500).json({error: 'Error'})
+            return res.status(500).json({error: error})
         }
     }
 

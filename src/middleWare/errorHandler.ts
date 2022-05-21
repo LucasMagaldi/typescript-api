@@ -1,5 +1,7 @@
 export default async function (error:any) {
-    console.log(error);
+    //console.log("============================================")
+    //console.log(error);
+    //console.log("============================================")
     const err = {
         statusCode: 500,
         msg: "Something went wrong, try again later"
@@ -10,7 +12,16 @@ export default async function (error:any) {
         err.msg = `${Object.keys(error.keyValue)} field has to be unique`
         return err
     }
-    console.log("Final Erro")
-    return error
+
+    if(error.name === 'ValidationError') {
+        err.statusCode = 401;
+        err.msg = Object.values(error.errors)   
+                    .map((item) => item)
+                    .join(', ');
+        
+        return err
+    }
+    
+    return err
     
 }
