@@ -1,5 +1,6 @@
 import User from "../model/User";
 import bcrypt from 'bcrypt';
+import Error from "../model/Error";
 
 class authService {
    async register(
@@ -24,6 +25,12 @@ class authService {
             console.log(11)
             return user;
        } catch (error) {
+            const date = new Date();
+            await Error.create({
+                 error,
+                 method: "Register Services",
+                 createdAt: date
+            })
             return error
        }
    }
