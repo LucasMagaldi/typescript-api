@@ -19,7 +19,6 @@ class Routes {
         });
 
         this.routes.post('/auth/register', authController.Register);
-        this.routes.use(errorHandler);
         this.routes.use(notFound);
     }
 }

@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import validator from "validator";
 import { string } from "yup";
 
 export interface UserDocument extends mongoose.Document {
@@ -12,10 +13,27 @@ export interface UserDocument extends mongoose.Document {
 
 const UserSchema = new mongoose.Schema(
     {
-      email: { type: String, required: true, unique: true },
-      name: { type: String, required: true },
-      last_name: {type: String, required: true},
-      password: { type: String, required: true },
+      email: { 
+        type: String, 
+        required: [true, 'Please, provide email'],
+        validate: {
+          validator: validator.isEmail,
+          message: 'Please provide a valid email'
+        },
+        unique: true
+      },
+      name: { 
+        type: String, 
+        required: [true, 'Please, provide name']
+       },
+      last_name: {
+        type: String,
+        required: [true, 'Please, provide last name']
+      },
+      password: { 
+        type: String, 
+        required: [true, 'Please, provide password']
+       },
       createdAt: {type: String, required: true},
     }
   );

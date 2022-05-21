@@ -21,11 +21,12 @@ class authService {
                     password: hash, 
                     createdAt:date
                  });
-            //console.log(user)
+            console.log(11)
             return user;
        } catch (error) {
             console.log(error);
-            return new Error
+            console.log("Final Errooo")
+            return error
        }
    }
 
@@ -33,7 +34,7 @@ class authService {
         try {
              const emailAlreadyUsed = await User.findOne({email});
              if(emailAlreadyUsed === null) return true
-             return false
+             return emailAlreadyUsed
         } catch (error) {
              return error
         }
