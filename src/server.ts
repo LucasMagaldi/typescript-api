@@ -12,7 +12,7 @@ const startAtlas = async () => {
         log.info('****ATLAS WAS STARTED****')
         log.info('****===========================================****')
     } catch (error) {
-        log.error(error)
+        log.error(`Atlas Error on CONNECTION: ${error}`)
     }
 }
 

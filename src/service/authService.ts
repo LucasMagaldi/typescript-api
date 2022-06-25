@@ -1,4 +1,5 @@
 import User from "../model/User";
+import AdminUser from "../model/AdminUser";
 import bcrypt from 'bcrypt';
 import Error from "../model/Error";
 
@@ -7,7 +8,8 @@ class authService {
        email: string,
        name: string,
        last:string,
-       pw: string
+       pw: string,
+       admin: boolean
        ) {
        try {
             const salt = await bcrypt.genSalt(10);
@@ -22,7 +24,9 @@ class authService {
                     password: hash, 
                     createdAt:date
                  });
-            console.log(11)
+            const id = JSON.stringify(user._id);
+            if(admin) await this.registerAsAdmin(email, name, id);
+            
             return user;
        } catch (error) {
             const date = new Date();
@@ -43,6 +47,24 @@ class authService {
         } catch (error) {
              return error
         }
+   }
+
+
+   async registerAsAdmin(email: string, name: string, id: string) {
+     try {
+          const date = new Date();
+          const user = await AdminUser
+               .create({
+                    email, 
+                    name, 
+                    id_user: id, 
+                    createdAt:date
+               });
+          return user;
+     } catch (err) {
+          console.log(err)
+          return err
+     }
    }
 }
 

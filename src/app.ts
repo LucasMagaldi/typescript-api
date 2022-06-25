@@ -1,12 +1,14 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 import routes from './routes';
+import dotenv from 'dotenv';
 
 class App {
 
-    server
+    server: Express
 
     constructor() {
+        
         this.server = express();
         this.AllowJson();
         this.Cors();
