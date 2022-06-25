@@ -7,6 +7,7 @@ export interface UserDocument extends mongoose.Document {
     name: String;
     last_name: String;
     password: String;
+    type_user: String,
     createdAt: String;
     updatedAt: String
 }   
@@ -34,6 +35,7 @@ const UserSchema = new mongoose.Schema(
         type: String, 
         required: [true, 'Please, provide password']
        },
+      type_user: {type: String, required: true},
       createdAt: {type: String, required: true},
     }
   );

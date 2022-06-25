@@ -24,8 +24,9 @@ class authController {
 
     async Register(req: any,res: any, next:any) {
         try {
-            const {email, name, last, pw, admin } = req.body
-            if(!email || !name || !last || !pw || !admin) {
+            const {email, name, last, pw, type_user, admin } = req.body
+            console.log(req.body)
+            if(!email || !name || !last || !pw ||!type_user || !admin) {
                 return res.status(400).json({msg:"Please, provide all values"})
             }
 
@@ -34,7 +35,7 @@ class authController {
 
 
             if(!emailAlreadyUsed) return res.status(401).json({msg: `alredy being used`})
-            const response = await authService.register(email,name,last,pw, admin);
+            const response = await authService.register(email,name,last,pw,type_user, admin);
             console.log(response);
             if(!response._id) { 
                 const errorHandling = await errorHandler(response)

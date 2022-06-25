@@ -17,7 +17,7 @@ class Routes {
         this.routes.get('/test', (req,res) => {
             return res.status(200).json({Number:1000})
         });
-
+        
         this.routes.post('/auth/register', authController.Register);
         this.routes.use(notFound);
     }

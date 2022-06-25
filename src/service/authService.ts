@@ -9,6 +9,7 @@ class authService {
        name: string,
        last:string,
        pw: string,
+       type_user: string,
        admin: boolean
        ) {
        try {
@@ -22,6 +23,7 @@ class authService {
                     name,
                     last_name: last,
                     password: hash, 
+                    type_user,
                     createdAt:date
                  });
             const id = JSON.stringify(user._id);
