@@ -3,6 +3,7 @@ import errorHandler from "./middleWare/errorHandler";
 import notFound from './middleWare/notFound'
 
 import authController from "./controller/authController";
+import userController from "./controller/userController";
 
 
 class Routes {
@@ -19,6 +20,8 @@ class Routes {
         });
         
         this.routes.post('/auth/register', authController.Register);
+        //
+        this.routes.get('/professionals', userController.GetAllProfessionals);
         this.routes.use(notFound);
     }
 }
