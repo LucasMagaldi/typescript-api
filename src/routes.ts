@@ -21,7 +21,8 @@ class Routes {
         
         this.routes.post('/auth/register', authController.Register);
         //
-        this.routes.get('/professionals', userController.GetAllProfessionals);
+        this.routes.get('/professionals/all', userController.GetAllProfessionals);
+        this.routes.get('/professional/:id', userController.GetAllProfessionals);
         this.routes.use(notFound);
     }
 }

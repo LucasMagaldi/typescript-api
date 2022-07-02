@@ -9,7 +9,7 @@ export interface UserDocument extends mongoose.Document {
     password: String;
     type_user: String,
     createdAt: String;
-    updatedAt: String
+    updatedAt: String;
 }   
 
 const UserSchema = new mongoose.Schema(

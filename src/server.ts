@@ -2,6 +2,9 @@ import app from './app';
 import connectDB from './db/connection';
 import log from './logger';
 import dotenv from 'dotenv';
+import os from 'os';
+
+const numCPU = os.cpus().length;
 
 dotenv.config();
 
@@ -18,7 +21,7 @@ const startAtlas = async () => {
 
 
 app.listen(process.env.PORT, () => {
-    log.info(`PLAY AT: ${process.env.PORT}`);
+    log.info(`PLAY AT: ${process.env.PORT} with ${numCPU} CORES`);
     startAtlas();
 })
 

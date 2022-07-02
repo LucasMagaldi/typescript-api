@@ -7,7 +7,7 @@ class UserController {
     async GetAllProfessionals(req: Request, res:Response) {
         try {
              const allProfessionals = await UserService.getAll();
-             return res.status(200).json({response: allProfessionals});
+             return res.status(200).json({professionals: allProfessionals});
         } catch (error) {
             console.log(error);
             return error

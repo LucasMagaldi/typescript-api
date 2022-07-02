@@ -14,6 +14,15 @@ class UserService {
         }
     }
 
+    async getUserById(id:string) {
+        try {
+            const user = await User.findOne().where('')
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
+    }
+
 }
 
 
